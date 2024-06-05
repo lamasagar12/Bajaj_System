@@ -6,7 +6,7 @@
 <footer class="footer">
 
   <!-- Widgets - Bootstrap Brain Component -->
-  <section class="bg-light py-4 py-md-5 py-xl-8 border-top border-light">
+  <section class="bg-light py-2 py-md-3 py-xl-4 border-top border-light">
     <div class="container overflow-hidden">
       <div class="row gy-4 gy-lg-0 justify-content-xl-between">
         <div class="col-12 col-md-4 col-lg-3 col-xl-2">
@@ -129,19 +129,18 @@
               <li class="mb-2">
                 <a href="terms.php" class="link-secondary text-decoration-none">Terms of Service</a>
               </li>
-              <li class="mb-0">
+              <li class="mb-2">
                 <a href="Privacy.php" class="link-secondary text-decoration-none">Privacy Policy</a>
               </li>
             </ul>
           </div>
         </div>
-    
       </div>
     </div>
   </section>
 
   <!-- Copyright - Bootstrap Brain Component -->
-  <div class="bg-light py-4 py-md-5 py-xl-8 border-top border-light-subtle">
+  <div class="bg-light py-2 py-md-2 py-xl-4 border-top border-light-subtle">
     <div class="container overflow-hidden">
         <div class="row gy-4 gy-md-0 align-items-md-center">
             <div class="col-xs-12 col-md-7 order-1 order-md-0">

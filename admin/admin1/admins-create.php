@@ -15,7 +15,6 @@
                         <div class="col-md-6 mb-3">
                             <label for="">First Name</label>
                             <input type="text" name="firstname" required class="form-control" pattern="[A-Za-z]+" title="Please enter only alphabetic characters"/>
-
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for=""> Last Name</label>

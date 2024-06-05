@@ -21,14 +21,8 @@ if (!$product) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($product['name']) ?> - Product Details</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container p-4">
@@ -66,7 +60,7 @@ if (!$product) {
                     <form action="process_booking.php" method="post">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" id="name" name="name" required class="form-control" pattern="[A-Za-z]+" title="Please enter only alphabetic characters"/>
+                            <input type="text" id="name" name="name" required class="form-control" pattern="^[A-Za-z]+(?: [A-Za-z]+){0,2}$" title=" Only alphabetic characters"/>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
@@ -74,14 +68,15 @@ if (!$product) {
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="text" name="phone" required class="form-control" pattern="\d+" title="Please enter only numeric characters"/>
+<input type="text" name="phone" required class="form-control" pattern="^(98|97|96)\d{8}$" title="Please Enter correct number"/>
+
                         </div>
                         <div class="mb-3">
                             <label for="booking_date" class="form-label">Preferred Date</label>
-                            <input type="date" class="form-control" id="booking_date" name="booking_date" required min="">
+                            <input type="date" class="form-control" id="booking_date" name="booking_date" required>
                             <script>
-  document.getElementById("booking_date").min = new Date().toISOString().split("T")[0];
-</script>
+                                document.getElementById("booking_date").min = new Date().toISOString().split("T")[0];
+                            </script>
                         </div>
                         <input type="hidden" name="bike_name" value="<?= htmlspecialchars($product['name']) ?>">
                         <input type="hidden" name="status" value="pending">
@@ -95,8 +90,7 @@ if (!$product) {
         </div>
     </div>
 
-    <!-- Include Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-</body>
+
+
 <?php include 'includer/footer.php'; ?>
+

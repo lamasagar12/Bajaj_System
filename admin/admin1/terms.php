@@ -13,37 +13,34 @@
                 <?php alertMessage(); ?>
                 <div class="table-responsive" style="overflow-x: auto;">
                     <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             <?php 
                             $terms = getAll('terms');
-                            $headings = ['ID', 'Title', 'Description', 'Action'];
-                            foreach($headings as $heading): ?>
+                            if(mysqli_num_rows($terms) > 0): 
+                                foreach($terms as $item): ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($item['id']) ?></td>
+                                        <td><?= htmlspecialchars($item['title']) ?></td>
+                                        <td><?= htmlspecialchars($item['description']) ?></td>
+                                        <td>
+                                            <a href="terms-edit.php?id=<?= htmlspecialchars($item['id']) ?>" class="btn btn-success btn-sm">Edit</a>
+                                            <a href="terms-del.php?id=<?= htmlspecialchars($item['id']) ?>" class="btn btn-danger btn-sm">Delete</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; 
+                            else: ?>
                                 <tr>
-                                    <th><?= $heading ?></th>
-                                    <?php if($heading == 'ID'): ?>
-                                        <?php if(mysqli_num_rows($terms) == 0): ?>
-                                            <td colspan="6">No Record found</td>
-                                        <?php endif; ?>
-                                    <?php else: ?>
-                                        <?php if(mysqli_num_rows($terms) > 0): ?>
-                                            <?php foreach($terms as $item): ?>
-                                                <td><?php 
-                                                if ($heading == 'Title') {
-                                                    echo htmlspecialchars($item['title']);
-                                                } elseif ($heading == 'Description') {
-                                                    echo htmlspecialchars($item['description']);
-                                               
-                                                } elseif ($heading == 'Action') {
-                                                    echo '<a href="terms-edit.php?id='.htmlspecialchars($item['id']).'" class="btn btn-success btn-sm">Edit</a>';
-                                                    echo '<a href="terms-del.php?id='.htmlspecialchars($item['id']).'" class="btn btn-danger btn-sm">Delete</a>';
-                                                } ?></td>
-                                            <?php endforeach; ?>
-                                        <?php else: ?>
-                                            <td colspan="5">No Record found</td>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
+                                    <td colspan="4">No Record found</td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>

@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="">Status (Unchecked=Visible, Checked=Hidden)</label><br>
-                            <input type="checkbox" name="status" style="width:15px;height:15px;">
+                            <input type="checkbox" name="status" style="width:15px;height:15px;" <?= $categoriesData['status'] == 1 ? 'checked' : '' ?>>
                         </div>
                         <div class="col-md-12 mb-3">
                             <br>

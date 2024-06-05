@@ -82,14 +82,14 @@
         </div>
     </li>
 
-     <!-- Terms Links -->
-     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSocial"
-           aria-expanded="true" aria-controls="collapseSocial">
-            <i class="fas fa-fw fa-share-alt"></i>
+    <!-- Terms Links -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTerms"
+           aria-expanded="true" aria-controls="collapseTerms">
+            <i class="fas fa-fw fa-file-alt"></i>
             <span>Terms</span>
         </a>
-        <div id="collapseSocial" class="collapse" aria-labelledby="headingSocial"
+        <div id="collapseTerms" class="collapse" aria-labelledby="headingTerms"
              data-parent="#accordionSidebar">
             <div class="bg-primary py-2 collapse-inner rounded">
                 <a class="collapse-item" href="terms-create.php">Add Terms</a>
