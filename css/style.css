@@ -1,0 +1,84 @@
+.navbar-nav .nav-item {
+    margin-right: 30px; /* Adjust the gap between nav items here */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    background-color: transparent; 
+    border: 1px solid white; /* Add your desired border color here */
+    border-radius: 5px; 
+  }
+  
+  .btn-danger:hover {
+    background-color: transparent;
+    color: white; 
+  }
+  
+  .home {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 85vh;
+    padding: 0px 8% 0;
+    overflow: hidden;
+  }
+  
+  .home .home-content {
+    max-width: 630px;
+    text-align: center;
+  }
+  
+  .home .home-content h1 {
+    font-size: 50px;
+    line-height: 1.2;
+  }
+  
+  .home .home-content h3 {
+    font-size: 40px;
+    color: blue;
+  }
+  
+  .home .home-content p {
+    font-size: 20px;
+  }
+  
+  .home-img {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    transform: rotate(45deg);
+  }
+  
+  .home-img .rhombus {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border: 25px solid #1743e3;
+  }
+  
+  .home-img .rhombus img {
+    display: block;
+    position: absolute;
+    top: -28px;
+    left: -330px;
+    max-width: 790px;
+    transform: rotate(-45deg);
+  }
+  
+  .btn-custom {
+    background-color: #0000ff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .btn-custom:hover {
+    background-color: #27ae60;
+    color: white;
+    text-decoration: none; /* Remove underline */
+  }
+  
