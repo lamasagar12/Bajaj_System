@@ -32,6 +32,9 @@ if (!$service) {
         <div class="col-md-12">
             <h5><?= nl2br(htmlspecialchars($service['description'])) ?></h5>
         </div>
+        <div class="col-md-12 text-center mt-4">
+            <a href="contactus.php" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Contact Us for More Information</a>
+        </div>
     </div>
 </div>
 

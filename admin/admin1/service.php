@@ -34,17 +34,16 @@ include 'includes/header.php';
                                         <td><?= htmlspecialchars($service['id']) ?></td>
                                       
                                         <td><?= htmlspecialchars($service['name']) ?></td>
-                                        <td>
-                                            <img src="uploads/<?= htmlspecialchars($service['image']) ?>" alt="<?= htmlspecialchars($service['name']) ?>" style="max-width: 45px; max-height: 45px;">
-                                        </td>
+                                    
+                                       <td> <img src="./uploads/<?= htmlspecialchars($service['image']) ?>" alt="<?= htmlspecialchars($service['name']) ?>" style="max-width: 60px; max-height:60px">  </td>
                                         <td><?= htmlspecialchars($service['description']) ?></td>
                                         <td>
-                                            <?php if ($service['status'] == 1): ?>
-                                                <span class="badge bg-primary">Active</span>
-                                            <?php else: ?>
-                                                <span class="badge bg-secondary">Inactive</span>
-                                            <?php endif; ?>
-                                        </td>
+    <?php if ($service['status'] == 0): ?>
+        <span class="badge bg-primary text-white">Active</span>
+    <?php else: ?>
+        <span class="badge bg-secondary text-white">Inactive</span>
+    <?php endif; ?>
+</td>
                                         <td>
                                             <a href="service-edit.php?id=<?= $service['id']; ?>" class="btn btn-success btn-sm">Edit</a>
                                             <a href="service-del.php?id=<?= $service['id']; ?>" class="btn btn-danger btn-sm">Delete</a>

@@ -1,25 +1,50 @@
+<?php include 'includer/header.php'; ?>
 
-<?php include'includer/header.php';?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .jumbotron {
+            background-color: #f8f9fa; /* Light gray */
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+        }
+
+        .jumbotron hr {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-width: 2px;
+            color: #343a40; /* Dark gray */
+        }
+
+        .jumbotron p {
+            font-size: 1.2rem;
+            color: #6c757d; /* Dark gray */
+        }
+
+        .jumbotron a {
+            color: #007bff; /* Blue */
+            text-decoration: none;
+        }
+
+        .jumbotron a:hover {
+            color: #0056b3; /* Darker blue */
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
-        <div class="text-center">
-            <h1 class="display-2">Thank You!</h1>
-            <p class="lead">Your booking request has been submitted successfully. We will contact you shortly.</p>
-            <a href="index.php" class="btn btn-primary">Return to Home</a>
+        <div class="jumbotron text-center">
+            <h1 class="display-3">Thank You!</h1>
+            <p class="lead">Your booking request has been submitted successfully and will get back to you shortly.</p>
+            <hr>
+            <p>If you need immediate assistance, please <a href="contactus.php">contact us</a>.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-sm text-light" href="index.php" role="button">Return to Home</a>
+            </p>
         </div>
     </div>
 
-    <!-- Include Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <?php include 'includer/footer.php'; ?>
 </body>
 </html>

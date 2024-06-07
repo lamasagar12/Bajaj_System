@@ -1,5 +1,15 @@
 <?php include 'includer/header.php'; ?>
+<style>
+                                                    .text-Primary a {
+    text-decoration: none; /* Removes underline */
+    color: black; /* Sets custom text color */
+}
 
+.text-Primary a:hover {
+    text-decoration: none; /* Removes underline on hover */
+    color: black; /* Sets custom text color on hover */
+}
+</style>
 <!-- Begin Page Content -->
 <div class="container-fluid px-4">
 
@@ -57,9 +67,13 @@
   <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
 </svg>
                                                     </div>
+
                                                     <div>
                                                         <h4 class="mb-3 text-Primary">Address</h4>
-                                                        <address class="mb-0 text-Primary"><?= htmlspecialchars($item['address']) ?></address>
+                                                        <address class="mb-0 text-Primary">
+                                                        <a href="https://www.google.com/maps?q=S%26S+Enterprises+Bajaj+Showroom" target="_blank">
+                                                        <?= htmlspecialchars($item['address']) ?>
+        </a></address>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4 mb-xxl-5">
@@ -127,11 +141,11 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="email" class="form-label">Email</label>
-                                                    <input type="email" class="form-control form-control-lg" id="email"  name="email"placeholder="Your email" required>
+                                                    <input type="email" class="form-control form-control-lg" id="email"  name="email" placeholder="Your email" required>
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="message" class="form-label">Message</label>
-                                                    <textarea class="form-control form-control-lg" id="message" rows="5" placeholder="Your message" name="email" required></textarea>
+                                                    <textarea class="form-control form-control-lg" id="message" rows="5" placeholder="Your message" name="message" required></textarea>
                                                 </div>
                                                 <div class="col-12 text-end">
                                                     <button type="submit" class="btn btn-primary btn-lg fs-5 px-5">Send message</button>

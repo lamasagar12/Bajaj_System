@@ -43,15 +43,16 @@
                                         <td><?= htmlspecialchars($item['description']) ?></td>
                                         <td>
                                             <?php if ($item['status'] == 1): ?>
-                                                <span class="badge bg-danger">Not In stock</span>
+                                                <span class="badge bg-danger text-light">Not In stock</span>
                                             <?php else: ?>
-                                                <span class="badge bg-info">In stock</span>
+                                                <span class="badge bg-info text-light">In stock</span>
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                        <a href="product-edit.php?id=<?=$item['id'];?>" class="btn btn-success btn-sm">Edit</a>
-                            <a href="product-del.php? id=<?=$item['id'];?>" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
+    <a href="product-edit.php?id=<?= $item['id']; ?>" class="btn btn-success btn-sm">Edit</a>
+    <a href="product-del.php?id=<?= $item['id']; ?>" class="btn btn-danger btn-sm ">Delete</a>
+</td>
+
                                     </tr>
                                 <?php endforeach; 
                             else: ?>

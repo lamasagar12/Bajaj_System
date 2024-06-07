@@ -36,9 +36,9 @@
                         <td>
                             <?php 
                             if($item['status']==1){
-                                echo '<span class="badge bg-danger">Hidden</span>';
+                                echo '<span class="badge bg-danger text-light">Hidden</span>';
                             }else{
-                                echo '<span class="badge bg-info">Visible</span>';
+                                echo '<span class="badge bg-info text-light">Visible</span>';
 
                             }?>
                             </td>

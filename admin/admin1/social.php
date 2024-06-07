@@ -6,8 +6,8 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <div class="card mt-4 shadow" style="min-width: 1200px;">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h4 class="mb-0">Home Page</h4>
-                <a href="homepage-create.php" class="btn btn-primary">Add Images</a>
+                <h4 class="mb-0">Social Page</h4>
+                <a href="social-create.php" class="btn btn-primary">Add Social</a>
             </div>
             <div class="card-body">
                 <?php alertMessage(); ?>
@@ -38,9 +38,9 @@
                                                     echo htmlspecialchars($item['youtube']);
                                                 } elseif ($heading == 'Status') {
                                                     if ($item['status'] == 1) {
-                                                        echo '<span class="badge bg-danger">Disable</span>';
+                                                        echo '<span class="badge bg-danger text-light ">Disable</span>';
                                                     } else {
-                                                        echo '<span class="badge bg-info">Active</span>';
+                                                        echo '<span class="badge bg-info text-light">Active</span>';
                                                     }
                                                 } elseif ($heading == 'Action') {
                                                     echo '<a href="social-edit.php?id='.htmlspecialchars($item['id']).'" class="btn btn-success btn-sm">Edit</a>';

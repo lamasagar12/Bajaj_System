@@ -19,8 +19,8 @@ include 'includes/header.php';
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="image">Service Image:</label>
-                            <input type="file" name="image" accept="image/*" required class="form-control"/>
+                                        <label for="image">Service Image:</label>
+                                        <input type="file" name="image" accept="image/*" required class="form-control"/>
                         </div>
 
                         <div class="col-md-12 mb-3">

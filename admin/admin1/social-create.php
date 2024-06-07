@@ -7,7 +7,7 @@ include 'includes/header.php';
         <div class="card mt-4 shadow" style="min-width: 1200px;">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4 class="mb-0">Add Social Page</h4>
-                <a href="homepage.php" class="btn btn-danger">Back</a>
+                <a href="social.php" class="btn btn-danger">Back</a>
             </div>
             <div class="card-body">
                 <form action="code.php" method="POST" enctype="multipart/form-data">
@@ -15,20 +15,20 @@ include 'includes/header.php';
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="facebook">Facebook:</label>
-                            <input type="text" name="facebook" required class="form-control" />
+                            <input type="text" name="facebook"  class="form-control" />
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="instagram">Instagram:</label>
-                            <input type="text" name="instagram" required class="form-control" />
+                            <input type="text" name="instagram"  class="form-control" />
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="twitter">Twitter:</label>
-                            <input type="text" name="twitter" required class="form-control" />
+                            <input type="text" name="twitter"  class="form-control" />
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="youtube">YouTube:</label>
-                            <input type="text" name="youtube" required class="form-control" />
+                            <input type="text" name="youtube"  class="form-control" />
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="status">Status (Unchecked=Disable, Checked=Active)</label><br>

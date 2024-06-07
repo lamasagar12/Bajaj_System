@@ -57,7 +57,10 @@
         <?php
         $services = getAll('services');
         if (mysqli_num_rows($services) > 0):
+            $activeFound = false;
             foreach ($services as $item):
+                if ($item['status'] == 0):
+                    $activeFound = true;
         ?>
         <div class="col-lg-3 mb-4">
             <div class="card h-100">
@@ -71,7 +74,17 @@
             </div>
         </div>
         <?php
+                endif;
             endforeach;
+            if (!$activeFound):
+        ?>
+        <div class="col-lg-12">
+            <div class="alert alert-warning" role="alert">
+                No active services found.
+            </div>
+        </div>
+        <?php
+            endif;
         else:
         ?>
         <div class="col-lg-12">

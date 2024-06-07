@@ -2,7 +2,6 @@
 <?php
 include 'includer/header.php';
 
-// Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
