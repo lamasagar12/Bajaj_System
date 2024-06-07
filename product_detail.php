@@ -1,9 +1,9 @@
 <?php
 include 'includer/header.php'; // Adjust path if necessary
 
+// Assuming you have a database connection in $conn variable
 // Function to get product details by ID
-function getProductById($id) {
-    global $conn; // Assuming you have a $conn variable for your database connection
+function getProductById($conn, $id) {
     $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -12,7 +12,7 @@ function getProductById($id) {
 
 // Get the product ID from the URL query string
 $product_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-$product = getProductById($product_id);
+$product = getProductById($conn, $product_id);
 
 if (!$product) {
     echo "<div class='alert alert-warning' role='alert'>Product not found.</div>";
@@ -21,8 +21,14 @@ if (!$product) {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($product['name']) ?> - Product Details</title>
     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container p-4">
@@ -60,7 +66,7 @@ if (!$product) {
                     <form action="process_booking.php" method="post">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" id="name" name="name" required class="form-control" pattern="^[A-Za-z]+(?: [A-Za-z]+){0,2}$" title=" Only alphabetic characters"/>
+                            <input type="text" id="name" name="name" required class="form-control" pattern="^[A-Za-z]+(?: [A-Za-z]+){0,2}$" title="Only alphabetic characters"/>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
@@ -68,8 +74,7 @@ if (!$product) {
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone</label>
-<input type="text" name="phone" required class="form-control" pattern="^(98|97|96)\d{8}$" title="Please Enter correct number"/>
-
+                            <input type="text" name="phone" required class="form-control" pattern="^(98|97|96)\d{8}$" title="Please enter correct number"/>
                         </div>
                         <div class="mb-3">
                             <label for="booking_date" class="form-label">Preferred Date</label>
@@ -90,7 +95,9 @@ if (!$product) {
         </div>
     </div>
 
-
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 
 <?php include 'includer/footer.php'; ?>
-

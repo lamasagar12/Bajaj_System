@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="mt-4"><i class="fas fa-shopping-cart"></i> Booking</h1>
+            <h1 class="mt-4"><i class="fas fa-chart-pie"></i> Overview</h1>
             <?php alertMessage(); ?>
         </div>
         
@@ -25,14 +25,7 @@
             </div>
         </div>
         
-        <div class="col-md-3 mb-3">
-            <div class="card card-body p-3">
-                <p class="text-sm mb-0 text-capitalize"><i class="fas fa-book"></i> <a href="booking.php">Total Booking</a></p>
-                <h5 class="fw-bold mb-0">
-                    <?= getCount('bookings'); ?>
-                </h5>
-            </div>
-        </div>
+
         
         <div class="col-md-3 mb-3">
             <div class="card card-body p-3">
