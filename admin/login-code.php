@@ -24,6 +24,7 @@ if (isset($_POST['loginbtn'])) {
                 $_SESSION['LoggedIn'] = true;
                 $_SESSION['LoggedInUser'] = [
                     'user_id' => $row['id'],
+                    'ProfileImage' => 'admin1/uploads/'. $row['image'], 
                     'Firstname' => $row['firstname'],
                     'Lastname' => $row['lastname'],
                     'Email' => $row['email'],

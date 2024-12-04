@@ -15,6 +15,8 @@
                 <thead><tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Phone</th>
+
                     <th>Email</th>
                     <th>Message</th>
                 </tr></thead>
@@ -25,6 +27,8 @@
                     <tr>
                         <td><?=$messageItem['id']?></td>
                         <td><?=$messageItem['name']?></td>
+                        <td><?=$messageItem['phone']?></td>
+
                         <td><?=$messageItem['email']?></td>
                         <td><?=$messageItem['message']?></td>
 

@@ -1,23 +1,31 @@
 <?php 
 include('config/function.php');
 //add admin
-if (isset($_POST['saveAdmin'])){
+if (isset($_POST['saveAdmin'])) {
+
+
+    // Validate form inputs
     $firstname = validate($_POST['firstname']);
     $lastname = validate($_POST['lastname']);
     $email = validate($_POST['email']);
     $password = validate($_POST['password']);
     $phone = isset($_POST['phone']) ? validate($_POST['phone']) : '';
     $is_ban = isset($_POST['is_ban']) ? 1 : 0;
-    
-    if($firstname != '' && $lastname != '' && $email != '' && $password != '' && $phone !== '') {
+
+    // Check required fields
+    if ($firstname != '' && $lastname != '' && $email != '' && $password != '' && $phone !== '') {
+        // Check if email is already used
         $emailCheckQuery = "SELECT * FROM admins WHERE email='$email'";
         $emailCheckResult = mysqli_query($conn, $emailCheckQuery);
-        
-        if ($emailCheckResult && mysqli_num_rows($emailCheckResult) > 0){
+
+        if ($emailCheckResult && mysqli_num_rows($emailCheckResult) > 0) {
             redirect('admins-create.php', 'Email Already Used.');
         }
-        
+
+        // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        // Prepare data for insertion
         $data = [
             'firstname' => $firstname,
             'lastname' => $lastname,
@@ -26,16 +34,18 @@ if (isset($_POST['saveAdmin'])){
             'phone' => $phone,
             "is_ban" => $is_ban,
         ];
-        
+
+        // Insert data into database
         $result = insert('admins', $data);
-        
-        if($result){
+
+        // Handle result of insertion
+        if ($result) {
             redirect('admins.php', 'Admin Created Successfully!');
         } else {
             redirect('admins-create.php', 'Something went Wrong');
         }
     } else {
-        redirect('admins-create.php', 'Please fill the required.');
+        redirect('admins-create.php', 'Please fill the required fields.');
     }
 }
 //update admin
@@ -131,30 +141,25 @@ if(isset($_POST['saveCategory'])){
         redirect('categories-create.php', 'Something went Wrong');
     }
 }
-// Update Categories
 if (isset($_POST['updateCategory'])) {
     $categoryID = $_POST['categoryID']; // Get the category ID
 
-    // Retrieve existing category data
     $categoryData = getById('categories', $categoryID);
     if ($categoryData['status'] == 200) {
         $image = $categoryData['data']['image']; // Retain the existing image
 
-        // Check if a new image file was uploaded without errors
         if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
             $image = $_FILES['image']['name']; // Get the file name
             $temp_name = $_FILES['image']['tmp_name']; // Get the temporary file name
             $image_path = "uploads/" . $image; // Define the path where the image will be stored
 
-            // Move the uploaded file to the specified location
             move_uploaded_file($temp_name, $image_path);
         }
 
-        $name = validate($_POST['name']); // Validate the category name
-        $description = validate($_POST['description']); // Validate the description
-        $status = isset($_POST['status']) ? 1 : 0; // Set status based on checkbox value
+        $name = validate($_POST['name']); 
+        $description = validate($_POST['description']); 
+        $status = isset($_POST['status']) ? 1 : 0; 
 
-        // Prepare data array
         $data = [
             'image' => $image,
             'name' => $name,
@@ -162,7 +167,6 @@ if (isset($_POST['updateCategory'])) {
             'status' => $status
         ];
 
-        // Update data in the database
         $result = update('categories', $categoryID, $data);
 
         if ($result) {
@@ -176,7 +180,6 @@ if (isset($_POST['updateCategory'])) {
 }
 
 
-// save homepage
 if(isset($_POST['saveProduct'])) {
     // Check if image file was uploaded without errors
     if(isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
@@ -184,7 +187,6 @@ if(isset($_POST['saveProduct'])) {
         $temp_name = $_FILES['image']['tmp_name']; // Get the temporary file name
         $image_path = "uploads/" . $image; // Define the path where the image will be stored
 
-        // Move the uploaded file to the specified location
         move_uploaded_file($temp_name, $image_path);
     } else {
         $image = ""; 
@@ -197,7 +199,6 @@ if(isset($_POST['saveProduct'])) {
     $description = validate($_POST['description']); // Validate the description
     $status = isset($_POST['status']) ? 1 : 0; // Set status based on checkbox value
 
-    // Prepare data array
     $data = [
         'image' => $image,
         'name' => $name,
@@ -209,7 +210,6 @@ if(isset($_POST['saveProduct'])) {
         'status' => $status
     ];
 
-    // Insert data into the database
     $result = insert('products', $data);
 
     if($result) {
@@ -219,34 +219,28 @@ if(isset($_POST['saveProduct'])) {
     }
 }
 
-// product-edit
+// product-update
 if(isset($_POST['updateProduct'])) {
-    $productId = $_POST['productId']; // Get the product ID
-    // Retrieve existing product data
+    $productId = $_POST['productId']; 
     $homepageData = getById('products', $productId);
     if($homepageData['status'] == 200) {
-        // Check if image file was uploaded without errors
         if(isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
-            $image = $_FILES['image']['name']; // Get the file name
-            $temp_name = $_FILES['image']['tmp_name']; // Get the temporary file name
-            $image_path = "uploads/" . $image; // Define the path where the image will be stored
-            // Move the uploaded file to the specified location
+            $image = $_FILES['image']['name']; 
+            $temp_name = $_FILES['image']['tmp_name']; 
+            $image_path = "uploads/" . $image; 
             move_uploaded_file($temp_name, $image_path);
-            // Update the image path in the data array
             $data['image'] = $image;
         } else {
             $image = $homepageData['data']['image']; // Retain the existing image if no new image is uploaded
         }
 
-        $name = validate($_POST['name']); // Validate the product name
-        $price = validate($_POST['price']); // Validate the price
-        $category_id = validate($_POST['category_id']); // Validate the category ID
-        $engine_capacity = validate($_POST['engine_capacity']); // Validate the engine capacity
-        $max_power = validate($_POST['max_power']); // Validate the max power
-        $description = validate($_POST['description']); // Validate the description
-        $status = isset($_POST['status']) ? 1 : 0; // Set status based on checkbox value
-
-        // Prepare data array
+        $name = validate($_POST['name']);
+        $price = validate($_POST['price']); 
+        $category_id = validate($_POST['category_id']); 
+        $engine_capacity = validate($_POST['engine_capacity']);
+        $max_power = validate($_POST['max_power']); 
+        $description = validate($_POST['description']); 
+        $status = isset($_POST['status']) ? 1 : 0;
         $data = [
             'image' => $image,
             'name' => $name,
@@ -258,7 +252,6 @@ if(isset($_POST['updateProduct'])) {
             'status' => $status
         ];
 
-        // Update data into the database
         $result = update('products', $productId, $data);
 
         if($result) {
@@ -277,30 +270,24 @@ if(isset($_POST['updateProduct'])) {
 
 // save homepage
 if(isset($_POST['saveImage'])) {
-    // Check if image file was uploaded without errors
     if(isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
-        $image = $_FILES['image']['name']; // Get the file name
-        $temp_name = $_FILES['image']['tmp_name']; // Get the temporary file name
-        $image_path = "uploads/" . $image; // Define the path where the image will be stored
-
-        // Move the uploaded file to the specified location
+        $image = $_FILES['image']['name']; 
+        $temp_name = $_FILES['image']['tmp_name']; 
+        $image_path = "uploads/" . $image; 
         move_uploaded_file($temp_name, $image_path);
     } else {
         $image = ""; 
     }
-    $name = validate($_POST['name']); // Validate the product name
-    $description = validate($_POST['description']); // Validate the description
-    $status = isset($_POST['status']) ? 1 : 0; // Set status based on checkbox value
+    $name = validate($_POST['name']); 
+    $description = validate($_POST['description']); 
+    $status = isset($_POST['status']) ? 1 : 0;
 
-    // Prepare data array
     $data = [
         'image' => $image,
         'name' => $name,
         'description' => $description,
         'status' => $status
     ];
-
-    // Insert data into the database
     $result = insert('homepage', $data);
 
     if($result) {
@@ -313,19 +300,15 @@ if(isset($_POST['saveImage'])) {
 
 // Update image details
 if (isset($_POST['updateImage'])) {
-    $homepageID = validate($_POST['homepageID']); // Get the homepage ID
+    $homepageID = validate($_POST['homepageID']); 
     
-    // Retrieve existing homepage data
     $homepageData = getById('homepage', $homepageID);
     if ($homepageData['status'] == 200) {
-        // Check if image file was uploaded without errors
         if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
             $image = $_FILES['image']['name']; // Get the file name
             $temp_name = $_FILES['image']['tmp_name']; // Get the temporary file name
             $image_path = "uploads/" . $image; // Define the path where the image will be stored
-            // Move the uploaded file to the specified location
             move_uploaded_file($temp_name, $image_path);
-            // Update the image path in the data array
             $data['image'] = $image;
 
             // Delete old image if a new image is uploaded

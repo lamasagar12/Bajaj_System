@@ -1,5 +1,9 @@
-<?php include 'includes/header.php'; ?>
-<!-- Begin Page Content -->
+<?php include 'includes/header.php'; 
+
+$categoriesData = [
+    'status' => 1 // Assuming this is the status value you want to set
+];
+?><!-- Begin Page Content -->
 <div class="container-fluid px-4">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">

@@ -21,7 +21,6 @@
                 <h1>Category</h1>
             </div>
             <div class="col-12 text-center">
-                <?php alertMessage(); ?>
             </div>
         </div>
 <div class="row">
@@ -52,8 +51,6 @@
         <hr class="sidebar-divider">
         <?php include 'product.php'; ?>
     </section>
-    <hr class="sidebar-divider">
-    <section id="book">
-    </section>
-</div>
+
+
 <?php include 'includer/footer.php'; ?>
